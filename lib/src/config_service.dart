@@ -1,16 +1,22 @@
 import 'dart:async';
+import 'dart:convert';
+
 import 'package:angular2/core.dart';
 import 'package:yaml/yaml.dart';
-import 'dart:convert';
 import 'package:resource/resource.dart' show Resource;
+
+import 'config_helper.dart';
 
 @Injectable()
 class ConfigService {
-
   YamlMap _config = null;
   bool _initialized = false;
 
-  ConfigService() {}
+  ConfigHelper helper;
+
+  ConfigService() {
+    helper = new ConfigHelper(this);
+  }
 
   Future _init() async {
     var resource = new Resource('config.yaml');
@@ -19,6 +25,9 @@ class ConfigService {
     _initialized = true;
   }
 
+  /**
+   * Возвращает значение из конфига по ключу
+   */
   Future<T> Get<T>(String name, [T defaultValue]) async {
     if (!_initialized)
       await _init();
@@ -44,6 +53,9 @@ class ConfigService {
     return value;
   }
 
+  /**
+   * Возвращает все значения из конфига
+   */
   Future<Map<String, String>> GetAll() async {
     Map<String, String> result = new Map<String, String>();
 

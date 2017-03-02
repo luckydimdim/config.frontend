@@ -17,8 +17,12 @@ class ConfigComponent implements OnInit {
 
     bool prod = await _config.Get<bool>('production', false);
     String port = await _config.Get<String>('backend_port');
+    String logsUrl = _config.helper.logsUrl;
+    String backendUrl = _config.helper.backendUrl;
 
     print(prod);
     print(port);
+    print(backendUrl);
+    print(logsUrl);
   }
 }
