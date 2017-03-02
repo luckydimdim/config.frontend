@@ -15,9 +15,10 @@ class ConfigComponent implements OnInit {
   Future ngOnInit() async {
     values = await _config.GetAll();
 
-    bool prod = await _config.Get<bool>("production", false);
+    bool prod = await _config.Get<bool>('production', false);
+    String port = await _config.Get<String>('backend_port');
 
     print(prod);
+    print(port);
   }
-
 }

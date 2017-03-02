@@ -10,29 +10,38 @@ class ConfigService {
   YamlMap _config = null;
   bool _initialized = false;
 
-  ConfigService() {
-  }
+  ConfigService() {}
 
   Future _init() async {
-    var resource = new Resource("config.yaml");
+    var resource = new Resource('config.yaml');
     var doc = await resource.readAsString(encoding: UTF8);
     _config = loadYaml(doc);
     _initialized = true;
   }
 
-  Future<T> Get<T>(String name, T default_value) async {
+  Future<T> Get<T>(String name, [T defaultValue]) async {
     if (!_initialized)
       await _init();
 
     if (_config == null)
-      return default_value;
+      return getDefaultValue(name, defaultValue);
 
     var value = _config[name];
 
     if (value == null)
-      return default_value;
+      return getDefaultValue(name, defaultValue);
 
     return value as T;
+  }
+
+  /**
+   * Возвращает либо значение по умолчанию, либо кидает исключение
+   */
+  T getDefaultValue<T>(String name, T value) {
+    if (value == null)
+      throw new ArgumentError('Neither value nor default value set for $name.');
+
+    return value;
   }
 
   Future<Map<String, String>> GetAll() async {
@@ -50,5 +59,4 @@ class ConfigService {
 
     return result;
   }
-
 }
