@@ -13,6 +13,8 @@ class ConfigHelper {
   String backendUrl = null;
   String contractsUrl = null;
   String logsUrl = null;
+  String callOffOrdersUrl = null;
+  String requestsUrl = null;
 
   ConfigHelper(ConfigService service) {
     _service = service;
@@ -33,6 +35,14 @@ class ConfigHelper {
 
             _service.Get<String>('backend_logs').then((value) {
               logsUrl = '$backendUrl/$value';
+            });
+
+            _service.Get<String>('backend_call_off_orders').then((value) {
+              callOffOrdersUrl = '$backendUrl/$value';
+            });
+
+            _service.Get<String>('backend_requests').then((value) {
+              requestsUrl = '$backendUrl/$value';
             });
 
           });
