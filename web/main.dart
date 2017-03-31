@@ -10,6 +10,9 @@ import 'package:master_layout/master_layout_component.dart';
 import 'package:config/config_component.dart';
 import 'package:config/config_service.dart';
 
+import 'package:alert/alert_service.dart';
+import 'package:aside/aside_service.dart';
+
 bool get isDebug =>
     (const String.fromEnvironment('PRODUCTION', defaultValue: 'false')) !=
     'true';
@@ -29,7 +32,9 @@ main() async {
     ROUTER_PROVIDERS,
     const Provider(LocationStrategy, useClass: HashLocationStrategy),
     const Provider(ConfigService),
-    const Provider(MasterLayoutComponent)]);
+    const Provider(MasterLayoutComponent),
+    const Provider(AlertService),
+    const Provider(AsideService)]);
 
   if (isDebug) {
     print('Application in DebugMode');

@@ -15,7 +15,9 @@ class ConfigService {
   ConfigHelper helper;
 
   ConfigService() {
-    helper = new ConfigHelper(this);
+    bool isDebug = (const String.fromEnvironment('PRODUCTION', defaultValue: 'false')) != 'true';
+
+    helper = new ConfigHelper(isDebug);
   }
 
   Future _init() async {
