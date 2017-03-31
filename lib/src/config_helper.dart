@@ -4,6 +4,8 @@ import 'package:angular2/core.dart';
  * Хелпер: комбинирует значения из конфига
  */
 class ConfigHelper {
+  bool production = false;
+
   String minLogLevel = '';
 
   String backendScheme = '';
@@ -20,6 +22,8 @@ class ConfigHelper {
 
     // Настройки для локальной отладки
     if (isDebug) {
+      production = false;
+
       minLogLevel = 'trace';
 
       backendScheme = 'http';
@@ -28,6 +32,8 @@ class ConfigHelper {
       backendPort = '5000';
     } else {
       // Настройки для выклдаки на сервер
+      production = true;
+
       minLogLevel = 'error';
 
       backendScheme = 'http';
