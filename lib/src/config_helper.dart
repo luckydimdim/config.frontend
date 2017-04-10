@@ -24,7 +24,7 @@ class ConfigHelper {
     if (isDebug) {
       production = false;
 
-      minLogLevel = 'trace';
+      minLogLevel = 'debug';
 
       backendScheme = 'http';
       backendBaseUrl = 'localhost';
