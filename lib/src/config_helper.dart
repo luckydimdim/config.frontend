@@ -17,6 +17,7 @@ class ConfigHelper {
   String logsUrl = '';
   String callOffOrdersUrl = '';
   String requestsUrl = '';
+  String timeSheetsUrl = '';
 
   ConfigHelper(bool isDebug) {
 
@@ -47,5 +48,6 @@ class ConfigHelper {
     logsUrl = '$backendUrl/log';
     callOffOrdersUrl = '$backendUrl/call-off-orders';
     requestsUrl = '$backendUrl/requests';
+    timeSheetsUrl = '$backendUrl/time-sheets';
   }
 }
