@@ -19,10 +19,12 @@ class ConfigComponent implements OnInit {
     String port = await _config.Get<String>('backend_port');
     String logsUrl = _config.helper.logsUrl;
     String backendUrl = _config.helper.backendUrl;
+    String authUrl = _config.helper.authUrl;
 
-    print(prod);
-    print(port);
-    print(backendUrl);
-    print(logsUrl);
+    print('production: $prod');
+    print('port: $port');
+    print('backendUrl: $backendUrl');
+    print('logsUrl: $logsUrl');
+    print('authUrl: $authUrl');
   }
 }
