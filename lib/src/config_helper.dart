@@ -14,6 +14,7 @@ class ConfigHelper {
   String backendUrl = '';
   String backendSuffix = '';
   String contractsUrl = '';
+  String usersUrl = '';
   String logsUrl = '';
   String callOffOrdersUrl = '';
   String requestsUrl = '';
@@ -46,6 +47,7 @@ class ConfigHelper {
 
     backendUrl = '$backendScheme://$backendBaseUrl:$backendPort$backendSuffix';
     contractsUrl = '$backendUrl/contracts';
+    usersUrl = '$backendUrl/users';
     logsUrl = '$backendUrl/log';
     callOffOrdersUrl = '$backendUrl/call-off-orders';
     requestsUrl = '$backendUrl/requests';
