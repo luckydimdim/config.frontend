@@ -21,19 +21,13 @@ class ConfigHelper {
   String timeSheetsUrl = '';
   String authUrl = '';
 
-  ConfigHelper(bool isDebug) {
+  ConfigHelper(String environment) {
+
+    environment = environment.toLowerCase();
 
     // Настройки для локальной отладки
-    if (isDebug) {
-      production = false;
 
-      minLogLevel = 'debug';
-
-      backendScheme = 'http';
-      backendBaseUrl = 'localhost';
-      backendSuffix = '';
-      backendPort = '5000';
-    } else {
+    if (environment == 'test') {
       // Настройки для выклдаки на сервер
       production = true;
 
@@ -43,6 +37,27 @@ class ConfigHelper {
       backendBaseUrl = 'cm-ylng-msk-01';
       backendSuffix = '/cmas-backend';
       backendPort = '80';
+    }
+    else if (environment == 'production') {
+      // Настройки для выклдаки на сервер
+      production = true;
+
+      minLogLevel = 'error';
+
+      backendScheme = 'http';
+      backendBaseUrl = 'cm-ylng-msk-05';
+      backendSuffix = '/backend';
+      backendPort = '80';
+    }
+    else {
+      production = false;
+
+      minLogLevel = 'debug';
+
+      backendScheme = 'http';
+      backendBaseUrl = 'localhost';
+      backendSuffix = '';
+      backendPort = '5000';
     }
 
     backendUrl = '$backendScheme://$backendBaseUrl:$backendPort$backendSuffix';
