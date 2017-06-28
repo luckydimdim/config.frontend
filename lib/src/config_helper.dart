@@ -44,10 +44,10 @@ class ConfigHelper {
 
       minLogLevel = 'error';
 
-      backendScheme = 'http';
-      backendBaseUrl = 'cm-ylng-msk-05';
+      backendScheme = 'https';
+      backendBaseUrl = 'cm-ylng-msk-07';
       backendSuffix = '/backend';
-      backendPort = '80';
+      backendPort = '443';
     }
     else {
       production = false;
